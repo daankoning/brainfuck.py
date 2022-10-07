@@ -5,6 +5,11 @@ TAPE_SIZE = 30_000
 
 
 def get_matching_brackets(program: str) -> tuple[dict[int, int], dict[int, int]]:
+	"""Gets the mappings required to match opening brackets to their closings, and vice-versa.
+
+	Returns:
+		A tuple containing two elements, the first of which mapping the opening brackets to their closing brackets. The
+		second element is the opposite, mapping the closing brackets to their respective opening brackets."""
 	opening_to_closing, closing_to_opening = {}, {}
 	opened_brackets = []
 	for pointer, command in enumerate(program):
@@ -19,10 +24,22 @@ def get_matching_brackets(program: str) -> tuple[dict[int, int], dict[int, int]]
 
 
 def strip_bad_characters(program: str) -> str:
+	"""Removes any characters that are not brainfuck commands, ensuring comments and whitespace are allowed."""
 	return "".join(filter(lambda x: x in [">", "<", "+", "-", ".", ",", "[", "]"], program))
 
 
-def evaluate_processed(program: str, input_callback: Callable[[], int] = None, output_callback: Callable[[int], None] = None):
+def evaluate_processed(program: str,
+					   input_callback: Callable[[], int] = None,
+					   output_callback: Callable[[int], None] = None):
+	"""Interprets `program`. Note that `program` should only contain brainfuck commands, if any other characters are
+	passed, it will likely behave fine, but undefined.
+
+	Args:
+		program: The program to run.
+		input_callback: The function that is called when the program requests input (i.e. encounters a `,`). This should
+			return an integer to write to the cell. Will default to prompting the user for input if left blank.
+		output_callback: The function that is called when the program wants to output a byte. Should take an integer as
+			an argument. Will default to writing to stdout if left blank."""
 	if input_callback is None:
 		input_callback = lambda: int(input())
 	if output_callback is None:
@@ -58,5 +75,10 @@ def evaluate_processed(program: str, input_callback: Callable[[], int] = None, o
 
 
 def brainfuck(program: str, *args):
+	"""Completely evaluates and runs `program`.
+
+	Args:
+		program: The program to run.
+		*args: For usage please see `brainfuck.evaluate_processed`."""
 	program = strip_bad_characters(program)
 	evaluate_processed(program, *args)

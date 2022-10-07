@@ -8,7 +8,7 @@ def incorrect_usage():
 
 def help_message():
 	sys.stdout.write("""NAME	
-	brainfuckpy -- A lightweight pure python brainfuck interpreter
+	brainfuck.py -- A lightweight pure python brainfuck interpreter
 
 SYNOPSIS
 	brainfuckpy [-h] [file|program]
@@ -22,19 +22,19 @@ DESCRIPTION
 
 def main():
 	if len(sys.argv) == 1 and select.select([sys.stdin, ], [], [], 0.0)[0]:
-		pgrm = sys.stdin.read()
-		brainfuckpy.brainfuck(pgrm)
+		prgm = sys.stdin.read()
+		brainfuckpy.brainfuck(prgm)
 	elif len(sys.argv) == 1:
 		incorrect_usage()
 	elif os.path.isfile(sys.argv[1]):
 		with open(sys.argv[1]) as file:
-			pgrm = file.read()
-		brainfuckpy.brainfuck(pgrm)
+			prgm = file.read()
+		brainfuckpy.brainfuck(prgm)
 	elif sys.argv[1] in {"-h", "--help"}:
 		help_message()
 	elif sys.argv[1]:
-		pgrm = sys.argv[1]
-		brainfuckpy.brainfuck(pgrm)
+		prgm = sys.argv[1]
+		brainfuckpy.brainfuck(prgm)
 	else:
 		incorrect_usage()
 
