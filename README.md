@@ -1,5 +1,5 @@
 # brainfuck.py
-A simple lightweight pure python brainfuck interpreter. 
+A simple lightweight pure python brainfuck interpreter and visualizer. 
 
 ## Installation
 The package is available on PyPI, as such simply run:
@@ -14,10 +14,10 @@ Basic can be used by simply providing the command line tool with a brainfuck pro
     $ cat hello.bf | python -m brainfuckpy
 
     $ python -m brainfuckpy hello.bf
+Additionally, the evaluation may be visualized by adding the `-vis` flag.
 
 If more control is required the package also gives access to the underlying functions. In general, passing the program to `brainfuckpy.brainfuck` should cover 90% of usecases. The other 10% should be solveable by calling `brainfuckpy.evaluate_processed` and changing the callbacks it uses (see documentation).
 
 ## Future development
-- An execution visualizer.
 - Compiling _to_ brainfuck.
 - Better documentation

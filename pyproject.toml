@@ -7,7 +7,7 @@ version = "0.1.1"
 authors = [
   { name="Daan Olivier Koning", email="daanolivierkoning@gmail.com" },
 ]
-description = "A lightweight pure python brainfuck interpreter"
+description = "A lightweight pure python brainfuck interpreter and visualizer"
 readme = "README.md"
 requires-python = ">=3.7"
 classifiers = [
@@ -19,6 +19,7 @@ keywords = [
     "pure python",
     "brainfuck",
     "interpeter",
+    "visualizer",
 ]
 [project.urls]
 "Homepage" = "https://github.com/daankoning/brainfuck.py"
