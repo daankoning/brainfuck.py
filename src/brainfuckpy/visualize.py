@@ -16,6 +16,10 @@ def _visualization_output_callback(byte: int):
 	outputs.append(chr(byte))
 
 
+def _visualization_input_callback() -> int:
+	return int(console.input("\n"))
+
+
 def get_subset(tape: list[str], centered_at: int, length: int=40) -> list[str]:
 	"""Gets a subset of the tape of length `length` in order to make the visualizer wrap lines better."""
 	minimum = centered_at - length//2
@@ -53,5 +57,10 @@ def write_visualization(program: str, tape: list[int], code_pointer: int, head_p
 
 def visualize_evaluation(program: str):
 	"""Completely visualizes the execution of `program`."""
-	brainfuckpy.brainfuck(program, output_callback=_visualization_output_callback, do_visualization=True)
+	brainfuckpy.brainfuck(
+		program,
+		input_callback=_visualization_input_callback,
+		output_callback=_visualization_output_callback,
+		do_visualization=True
+	)
 
