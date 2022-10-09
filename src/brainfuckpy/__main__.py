@@ -23,23 +23,24 @@ DESCRIPTION
 
 
 def main():
-	do_visualizion = False
+	evaluator = brainfuckpy.brainfuck
 	if "-vis" in sys.argv or "--visualize" in sys.argv:
-		do_visualizion = True
+		evaluator = brainfuckpy.visualize_evaluation
+
 	if len(sys.argv) == 1 and select.select([sys.stdin, ], [], [], 0.0)[0]:
 		prgm = sys.stdin.read()
-		brainfuckpy.brainfuck(prgm, do_visualization=do_visualizion)
+		evaluator(prgm)
 	elif len(sys.argv) == 1:
 		incorrect_usage()
-	elif os.path.isfile(sys.argv[1]):
+	elif os.path.isfile(sys.argv[-1]):
 		with open(sys.argv[-1]) as file:
 			prgm = file.read()
-		brainfuckpy.brainfuck(prgm, do_visualization=do_visualizion)
+		evaluator(prgm)
 	elif sys.argv[1] in {"-h", "--help"}:
 		help_message()
 	elif sys.argv[-1]:
 		prgm = sys.argv[-1]
-		brainfuckpy.brainfuck(prgm, do_visualization=do_visualizion)
+		evaluator(prgm)
 	else:
 		incorrect_usage()
 
