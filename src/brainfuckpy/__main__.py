@@ -11,30 +11,35 @@ def help_message():
 	brainfuck.py -- A lightweight pure python brainfuck interpreter
 
 SYNOPSIS
-	brainfuckpy [-h] [file|program]
+	brainfuckpy [-h] [-vis] [file|program]
 
 DESCRIPTION
 	Either pipe in, provide as an argument or provide a file containing a valid program.
 	
+	-vis --visualize
+			Run the code visualizer.
 	-h, --help
-			display this message.\n""")
+			Display this message.\n""")
 
 
 def main():
+	do_visualizion = False
+	if "-vis" in sys.argv or "--visualize" in sys.argv:
+		do_visualizion = True
 	if len(sys.argv) == 1 and select.select([sys.stdin, ], [], [], 0.0)[0]:
 		prgm = sys.stdin.read()
-		brainfuckpy.brainfuck(prgm)
+		brainfuckpy.brainfuck(prgm, do_visualization=do_visualizion)
 	elif len(sys.argv) == 1:
 		incorrect_usage()
 	elif os.path.isfile(sys.argv[1]):
-		with open(sys.argv[1]) as file:
+		with open(sys.argv[-1]) as file:
 			prgm = file.read()
-		brainfuckpy.brainfuck(prgm)
+		brainfuckpy.brainfuck(prgm, do_visualization=do_visualizion)
 	elif sys.argv[1] in {"-h", "--help"}:
 		help_message()
-	elif sys.argv[1]:
-		prgm = sys.argv[1]
-		brainfuckpy.brainfuck(prgm)
+	elif sys.argv[-1]:
+		prgm = sys.argv[-1]
+		brainfuckpy.brainfuck(prgm, do_visualization=do_visualizion)
 	else:
 		incorrect_usage()
 

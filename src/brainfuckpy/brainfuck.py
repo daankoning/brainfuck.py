@@ -1,3 +1,4 @@
+import brainfuckpy.visualize as visualize
 from typing import Callable
 import sys
 
@@ -30,7 +31,8 @@ def strip_bad_characters(program: str) -> str:
 
 def evaluate_processed(program: str,
 					   input_callback: Callable[[], int] = None,
-					   output_callback: Callable[[int], None] = None):
+					   output_callback: Callable[[int], None] = None,
+					   do_visualization: bool = False):
 	"""Interprets `program`. Note that `program` should only contain brainfuck commands, if any other characters are
 	passed, it will likely behave fine, but undefined.
 
@@ -39,7 +41,8 @@ def evaluate_processed(program: str,
 		input_callback: The function that is called when the program requests input (i.e. encounters a `,`). This should
 			return an integer to write to the cell. Will default to prompting the user for input if left blank.
 		output_callback: The function that is called when the program wants to output a byte. Should take an integer as
-			an argument. Will default to writing to stdout if left blank."""
+			an argument. Will default to writing to stdout if left blank.
+		do_visualization: Whether the function should display its operations. Defaults to `False`."""
 	if input_callback is None:
 		input_callback = lambda: int(input())
 	if output_callback is None:
@@ -71,14 +74,16 @@ def evaluate_processed(program: str,
 		elif cmd == "]" and tape[head_position] != 0:
 			code_position = closing_to_opening[code_position]
 
+		if do_visualization:
+			visualize.write_visualization(program, tape, code_position, head_position)
 		code_position += 1
 
 
-def brainfuck(program: str, *args):
+def brainfuck(program: str, **kwargs):
 	"""Completely evaluates and runs `program`.
 
 	Args:
 		program: The program to run.
 		*args: For usage please see `brainfuck.evaluate_processed`."""
 	program = strip_bad_characters(program)
-	evaluate_processed(program, *args)
+	evaluate_processed(program, **kwargs)
