@@ -1,4 +1,4 @@
-import brainfuckpy
+from . import brainfuck
 from rich.console import Console
 import time
 
@@ -25,7 +25,7 @@ def get_subset(tape: list[str], centered_at: int, length: int=40) -> list[str]:
 	minimum = centered_at - length//2
 	maximum = centered_at + length//2
 
-	if minimum < 0 or maximum > brainfuckpy.TAPE_SIZE:
+	if minimum < 0 or maximum > brainfuck.TAPE_SIZE:
 		return tape[minimum:] + tape[:maximum]
 	else:
 		return tape[minimum:maximum]
@@ -57,7 +57,7 @@ def write_visualization(program: str, tape: list[int], code_pointer: int, head_p
 
 def visualize_evaluation(program: str):
 	"""Completely visualizes the execution of `program`."""
-	brainfuckpy.brainfuck(
+	brainfuck.evaluate_brainfuck(
 		program,
 		input_callback=_visualization_input_callback,
 		output_callback=_visualization_output_callback,

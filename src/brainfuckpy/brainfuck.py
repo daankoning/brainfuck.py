@@ -1,4 +1,4 @@
-import brainfuckpy.visualize as visualize
+from . import visualize
 from typing import Callable
 import sys
 
@@ -25,7 +25,7 @@ def get_matching_brackets(program: str) -> tuple[dict[int, int], dict[int, int]]
 
 
 def strip_bad_characters(program: str) -> str:
-	"""Removes any characters that are not brainfuck commands, ensuring comments and whitespace are allowed."""
+	"""Removes any characters that are not evaluate_brainfuck commands, ensuring comments and whitespace are allowed."""
 	return "".join(filter(lambda x: x in [">", "<", "+", "-", ".", ",", "[", "]"], program))
 
 
@@ -33,7 +33,7 @@ def evaluate_processed(program: str,
 					   input_callback: Callable[[], int] = None,
 					   output_callback: Callable[[int], None] = None,
 					   do_visualization: bool = False):
-	"""Interprets `program`. Note that `program` should only contain brainfuck commands, if any other characters are
+	"""Interprets `program`. Note that `program` should only contain evaluate_brainfuck commands, if any other characters are
 	passed, it will likely behave fine, but undefined.
 
 	Args:
@@ -79,11 +79,11 @@ def evaluate_processed(program: str,
 		code_position += 1
 
 
-def brainfuck(program: str, **kwargs):
+def evaluate_brainfuck(program: str, **kwargs):
 	"""Completely evaluates and runs `program`.
 
 	Args:
 		program: The program to run.
-		*args: For usage please see `brainfuck.evaluate_processed`."""
+		*args: For usage please see `evaluate_brainfuck.evaluate_processed`."""
 	program = strip_bad_characters(program)
 	evaluate_processed(program, **kwargs)

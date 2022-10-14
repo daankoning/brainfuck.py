@@ -1,4 +1,5 @@
-import brainfuckpy
+from .brainfuck import evaluate_brainfuck
+from .visualize import visualize_evaluation
 import sys, os, select
 
 
@@ -8,7 +9,7 @@ def incorrect_usage():
 
 def help_message():
 	sys.stdout.write("""NAME	
-	brainfuck.py -- A lightweight pure python brainfuck interpreter
+	evaluate_brainfuck.py -- A lightweight pure python evaluate_brainfuck interpreter
 
 SYNOPSIS
 	brainfuckpy [-h] [-vis] [file|program]
@@ -23,9 +24,9 @@ DESCRIPTION
 
 
 def main():
-	evaluator = brainfuckpy.brainfuck
+	evaluator = evaluate_brainfuck
 	if "-vis" in sys.argv or "--visualize" in sys.argv:
-		evaluator = brainfuckpy.visualize_evaluation
+		evaluator = visualize_evaluation
 
 	if len(sys.argv) == 1 and select.select([sys.stdin, ], [], [], 0.0)[0]:
 		prgm = sys.stdin.read()

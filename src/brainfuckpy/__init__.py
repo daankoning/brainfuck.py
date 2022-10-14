@@ -1,2 +1,2 @@
-from brainfuckpy.brainfuck import *
-from brainfuckpy.visualize import *
+from .brainfuck import *
+from .visualize import *
