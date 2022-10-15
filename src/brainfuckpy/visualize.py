@@ -7,7 +7,7 @@ console = Console()
 CODE_ACCENT = "bold red"
 TAPE_ACCENT = "bold red"
 
-SECOND_PER_REFRESH = 0.1
+seconds_per_refresh = 0.1
 
 outputs = []
 
@@ -18,6 +18,11 @@ def _visualization_output_callback(byte: int):
 
 def _visualization_input_callback() -> int:
 	return int(console.input("\n"))
+
+
+def set_visualization_refresh_rate(speed: float):
+	global seconds_per_refresh
+	seconds_per_refresh = speed
 
 
 def get_subset(tape: list[str], centered_at: int, length: int=40) -> list[str]:
@@ -52,7 +57,7 @@ def write_visualization(program: str, tape: list[int], code_pointer: int, head_p
 	console.print("\n")
 	console.print(output_text)
 
-	time.sleep(SECOND_PER_REFRESH)
+	time.sleep(seconds_per_refresh)
 
 
 def visualize_evaluation(program: str):
