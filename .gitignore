@@ -2,5 +2,5 @@ dist
 venv
 .idea
 src/brainfuckpy.egg-info
-src/brainfuckpy/__pycache__
+__pycache__
 .DS_Store
