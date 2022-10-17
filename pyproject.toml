@@ -3,11 +3,11 @@ requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 [project]
 name = "brainfuckpy"
-version = "0.2.0"
+version = "0.2.1"
 authors = [
   { name="Daan Olivier Koning", email="daanolivierkoning@gmail.com" },
 ]
-description = "A lightweight pure python evaluate_brainfuck interpreter and visualizer"
+description = "A lightweight pure python brainfuck interpreter and visualizer"
 readme = "README.md"
 requires-python = ">=3.9"
 classifiers = [
@@ -17,7 +17,7 @@ classifiers = [
 ]
 keywords = [
     "pure python",
-    "evaluate_brainfuck",
+    "brainfuck",
     "interpeter",
     "visualizer",
 ]

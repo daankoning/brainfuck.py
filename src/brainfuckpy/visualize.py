@@ -30,7 +30,10 @@ def get_subset(tape: list[str], centered_at: int, length: int=40) -> list[str]:
 	minimum = centered_at - length//2
 	maximum = centered_at + length//2
 
-	if minimum < 0 or maximum > brainfuck.TAPE_SIZE:
+	if minimum < 0:
+		return tape[minimum:] + tape[:maximum]
+	elif maximum > brainfuck.TAPE_SIZE:
+		maximum %= brainfuck.TAPE_SIZE
 		return tape[minimum:] + tape[:maximum]
 	else:
 		return tape[minimum:maximum]
