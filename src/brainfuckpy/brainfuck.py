@@ -57,9 +57,9 @@ def evaluate_processed(program: str,
 		cmd = program[code_position]
 
 		if cmd == ">":
-			head_position += 1
+			head_position = (head_position + 1) % TAPE_SIZE
 		elif cmd == "<":
-			head_position -= 1
+			head_position = (head_position - 1) % TAPE_SIZE
 		elif cmd == "+":
 			tape[head_position] += 1
 		elif cmd == "-":
