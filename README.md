@@ -2,10 +2,10 @@
 
 # brainfuck.py
 
-[![PyPI version](https://badge.fury.io/py/brainfuckpy.svg)](https://pypi.python.org/pypi/brainfuckpy/)
+[![PyPI version](https://badge.fury.io/py/brainfuckpy.svg?)](https://pypi.python.org/pypi/brainfuckpy/)
 [![Monthyly Pypi Installs](https://static.pepy.tech/personalized-badge/brainfuckpy?period=month&units=international_system&left_color=grey&right_color=brightgreen&left_text=monthly%20pypi%20installs)](https://pepy.tech/project/brainfuckpy)
 [![Tests](https://github.com/daankoning/brainfuck.py/actions/workflows/tests.yml/badge.svg?branch=main)](https://github.com/daankoning/brainfuck.py/actions/workflows/tests.yml)
-[![GitHub license](https://badgen.net/github/license/daankoning/brainfuck.py)](https://github.com/daankoning/brainfuck.py/blob/main/LICENSE)
+[![GitHub license](https://badgen.net/github/license/daankoning/brainfuck.py?)](https://github.com/daankoning/brainfuck.py/blob/main/LICENSE)
 
 
 A simple lightweight pure python brainfuck interpreter and visualizer. 
