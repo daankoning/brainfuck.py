@@ -10,7 +10,7 @@ def incorrect_usage():
 
 def help_message():
 	sys.stdout.write("""NAME	
-	evaluate_brainfuck.py -- A lightweight pure python evaluate_brainfuck interpreter
+	brainfuck.py -- A lightweight pure python brainfuck interpreter
 
 SYNOPSIS
 	brainfuckpy [-h] [-vis [-vrr rate]] [file|program]
