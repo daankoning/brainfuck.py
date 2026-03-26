@@ -28,7 +28,3 @@ Basic can be used by simply providing the command line tool with a brainfuck pro
 Additionally, the evaluation may be visualized by adding the `-vis` flag.
 
 If more control is required the package also gives access to the underlying functions. In general, passing the program to `brainfuckpy.evaluate_brainfuck` should cover 90% of usecases. The other 10% should be solveable by calling `brainfuckpy.evaluate_processed` and changing the callbacks it uses (see documentation).
-
-## Future development
-- Compiling _to_ brainfuck.
-- Better documentation
